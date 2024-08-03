@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Name Numerology Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1> ចង់ដឹងថាតើឈ្មោះរបស់អ្នកខ្លាំងប៉ុណ្ណា 
+    </h1>
+    <input type="text" id="nameInput" placeholder="បញ្ចូលឈ្មោះឡាតាំង ដកឃ្លាក៏បានមិនបាច់ក៏បាន">
+    <button onclick="calculateNumerology()">ចាប់ផ្តើម</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateNumerology() {
+            const letterToNumber = {
+                'A': 1, 'J': 1, 'S': 1,
+                'B': 2, 'K': 2, 'T': 2,
+                'C': 3, 'L': 3, 'U': 3,
+                'D': 4, 'M': 4, 'V': 4,
+                'E': 5, 'N': 5, 'W': 5,
+                'F': 6, 'O': 6, 'X': 6,
+                'G': 7, 'P': 7, 'Y': 7,
+                'H': 8, 'Q': 8, 'Z': 8,
+                'I': 9, 'R': 9
+            };
+
+            function getSingleDigit(num) {
+                while (num > 9) {
+                    num = num.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+                }
+                return num;
+            }
+
+            const name = document.getElementById('nameInput').value.toUpperCase().replace(/\s+/g, '');
+            let total = 0;
+
+            for (let char of name) {
+                if (letterToNumber[char]) {
+                    total += letterToNumber[char];
+                }
+            }
+
+            const result = getSingleDigit(total);
+            document.getElementById('result').textContent = `លទ្ធផលរបស់ឈ្មោះ "${name}" គឺ: ${result} គ្រាប់`;
+        }
+    </script>
+  <br>
+  <p>ឈ្មោះដែលទទួលបានផលបូក 7, 8, 9 គឺអនាគតអ្នកដឹកនាំ 
+    <br> លេខ២ គឺអាក្រក់បំផុត </p>
+    <br><br>
+    <p>បង្កើតឡើងដោយ Bee Owen
+    <br>ទូរសទ្ទលេខ +855(0)10 431 249
+  <br>Telegram:+85510431249</b>
+  </p>
+</body>
+</html>
